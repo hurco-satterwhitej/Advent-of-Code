@@ -60,7 +60,7 @@ class Antenna
 private void AdventDay8(object sender, MouseButtonEventArgs e)
 {
     var rawFile = File.ReadAllLines(@"Input.txt");
-    //Input is a series of n lines with a final answer, followed by a series of operands separated by spaces.
+    //Input is a series of n lines with various '.' and letters, representing a map of antennae.
     List<string> mapLines = new List<string>();
     foreach (string line in rawFile)
     {
