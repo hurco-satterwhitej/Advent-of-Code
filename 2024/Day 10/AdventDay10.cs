@@ -35,6 +35,25 @@ void AdventDay10()
     MessageBox.Show("Trailhead score: " + trailheadScore.ToString());
 }
 
+int SearchForAllTrailheadScores(ref char[,] input, int rowCount, int colCount)
+{
+    int runningScoreCount = 0;
+    for (int i = 0; i < rowCount; i++)
+    {
+        for (int j = 0; j < colCount; j++)
+        {
+            //Begin the search if current index is a 0. Remaining searching will be recursive.
+            if (input[i, j] == '0')
+            {
+                List<TrailSpot> trailheadEnds = new List<TrailSpot>();
+                SearchAllDirectionsFromCurrentForTrailheadEnd(ref input, i, j, rowCount, colCount, ref trailheadEnds);
+                runningScoreCount += trailheadEnds.Count;
+            }
+        }
+    }
+    return runningScoreCount;
+}
+
 void SearchAllDirectionsFromCurrentForTrailheadEnd(ref char[,] input, int currentRow, int currentCol, int maxRow, int maxCol, ref List<TrailSpot> trailheadEnds)
 {
     char current = input[currentRow, currentCol];
@@ -87,23 +106,4 @@ void SearchAllDirectionsFromCurrentForTrailheadEnd(ref char[,] input, int curren
             SearchAllDirectionsFromCurrentForTrailheadEnd(ref input, currentRow, currentCol - 1, maxRow, maxCol, ref trailheadEnds);
         }
     }
-}
-
-int SearchForAllTrailheadScores(ref char[,] input, int rowCount, int colCount)
-{
-    int runningScoreCount = 0;
-    for (int i = 0; i < rowCount; i++)
-    {
-        for (int j = 0; j < colCount; j++)
-        {
-            //Begin the search if current index is a 0. Remaining searching will be recursive.
-            if (input[i, j] == '0')
-            {
-                List<TrailSpot> trailheadEnds = new List<TrailSpot>();
-                SearchAllDirectionsFromCurrentForTrailheadEnd(ref input, i, j, rowCount, colCount, ref trailheadEnds);
-                runningScoreCount += trailheadEnds.Count;
-            }
-        }
-    }
-    return runningScoreCount;
 }
