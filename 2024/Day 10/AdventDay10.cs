@@ -93,7 +93,7 @@ void SearchAllDirectionsFromCurrentForTrailheadEnd(ref char[,] input, int curren
     {
         if (current + 1 == input[currentRow + 1, currentCol])
         {
-            //North is a gradual step up from current. Continue searching from this point.
+            //South is a gradual step up from current. Continue searching from this point.
             SearchAllDirectionsFromCurrentForTrailheadEnd(ref input, currentRow + 1, currentCol, maxRow, maxCol, ref trailheadEnds);
         }
     }
@@ -102,7 +102,7 @@ void SearchAllDirectionsFromCurrentForTrailheadEnd(ref char[,] input, int curren
     {
         if (current + 1 == input[currentRow, currentCol - 1])
         {
-            //East is a gradual step up from current. Continue searching from this point.
+            //West is a gradual step up from current. Continue searching from this point.
             SearchAllDirectionsFromCurrentForTrailheadEnd(ref input, currentRow, currentCol - 1, maxRow, maxCol, ref trailheadEnds);
         }
     }
