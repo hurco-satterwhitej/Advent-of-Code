@@ -12,6 +12,29 @@ struct TrailSpot
     }
 }
 
+void AdventDay10()
+{
+    var rawFile = File.ReadAllLines(@"Input.txt");
+    //Input is a series of n lines with various numbers 0-9.
+    List<string> lines = new List<string>();
+    foreach (string line in rawFile)
+    {
+        lines.Add(line);
+    }
+    int rowCount = lines.Count;
+    int colCount = lines[0].Length;
+    char[,] input = new char[rowCount, colCount];
+    foreach (string line in lines)
+    {
+        for (int i = 0; i < line.Length; i++)
+        {
+            input[lines.IndexOf(line), i] = line[i];
+        }
+    }
+    int trailheadScore = SearchForAllTrailheadScores(ref input, rowCount, colCount);
+    MessageBox.Show("Trailhead score: " + trailheadScore.ToString());
+}
+
 void SearchAllDirectionsFromCurrentForTrailheadEnd(ref char[,] input, int currentRow, int currentCol, int maxRow, int maxCol, ref List<TrailSpot> trailheadEnds)
 {
     char current = input[currentRow, currentCol];
@@ -83,27 +106,4 @@ int SearchForAllTrailheadScores(ref char[,] input, int rowCount, int colCount)
         }
     }
     return runningScoreCount;
-}
-
-void AdventDay10()
-{
-    var rawFile = File.ReadAllLines(@"Input.txt");
-    //Input is a series of n lines with various numbers 0-9.
-    List<string> lines = new List<string>();
-    foreach (string line in rawFile)
-    {
-        lines.Add(line);
-    }
-    int rowCount = lines.Count;
-    int colCount = lines[0].Length;
-    char[,] input = new char[rowCount, colCount];
-    foreach (string line in lines)
-    {
-        for (int i = 0; i < line.Length; i++)
-        {
-            input[lines.IndexOf(line), i] = line[i];
-        }
-    }
-    int trailheadScore = SearchForAllTrailheadScores(ref input, rowCount, colCount);
-    MessageBox.Show("Trailhead score: " + trailheadScore.ToString());
 }

@@ -1,3 +1,23 @@
+private void AdventDay9()
+{
+    var rawFile = File.ReadAllLines(@"Input.txt");
+    //Input is one line with a series of numbers, representing some encoded disk map.
+    string diskMap = "";
+    foreach (string line in rawFile)
+    {
+        diskMap = line;
+    }
+    List<long> diskData = ExpandDiskMap(diskMap);
+    int diskSize = diskData.Count;
+
+    //CompressExpandedMap(ref diskData, ref diskSize);
+    CompressExpandedMapWithFullBlocks(ref diskData, diskSize);
+
+    long sum = PerformCompressedDiskChecksum(diskData, diskSize);
+
+    MessageBox.Show("Checksum result: " + sum.ToString());
+}
+
 List<long> ExpandDiskMap(string diskMap)
 {
     List<long> expanded = new List<long>();
@@ -138,24 +158,4 @@ long PerformCompressedDiskChecksum(List<long> diskData, int diskSize)
         }
     }
     return checksum;
-}
-
-private void AdventDay9()
-{
-    var rawFile = File.ReadAllLines(@"Input.txt");
-    //Input is one line with a series of numbers, representing some encoded disk map.
-    string diskMap = "";
-    foreach (string line in rawFile)
-    {
-        diskMap = line;
-    }
-    List<long> diskData = ExpandDiskMap(diskMap);
-    int diskSize = diskData.Count;
-
-    //CompressExpandedMap(ref diskData, ref diskSize);
-    CompressExpandedMapWithFullBlocks(ref diskData, diskSize);
-
-    long sum = PerformCompressedDiskChecksum(diskData, diskSize);
-
-    MessageBox.Show("Checksum result: " + sum.ToString());
 }
