@@ -1,4 +1,4 @@
-void AdventDay10()
+void AdventDay11()
 {
     var rawFile = File.ReadAllLines(@"Input.txt");
     //Input is one line with a series of numbers, representing engraved stones.
