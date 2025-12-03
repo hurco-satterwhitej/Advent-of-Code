@@ -52,7 +52,7 @@ void AdventDay3()
         }
         //Part 1: Find the highest joltage by activating 2 batteries. Use one recursive repetition.
         runningJoltagePart1 += RecursiveJoltage(ref joltages, 1, -1);
-        //Part 2: Find the highest joltage by activating 12 batteries. Use elevent recursive repetitions.
+        //Part 2: Find the highest joltage by activating 12 batteries. Use eleven recursive repetitions.
         runningJoltagePart2 += RecursiveJoltage(ref joltages, 11, -1);
     }
     MessageBox.Show("Part 1: " + runningJoltagePart1.ToString() + "\nPart 2: " + runningJoltagePart2.ToString());
