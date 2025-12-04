@@ -86,6 +86,7 @@ void AdventDay4()
     bool firstPass = true;
     long movableCount = -1;
     long totalMoved = 0;
+    int iterations = 0;
     do
     {
         movableCount = 0;
@@ -117,7 +118,8 @@ void AdventDay4()
             MessageBox.Show("Part 1: " + movableCount.ToString());
         }
         totalMoved += movableCount;
+        iterations++;
     } while (movableCount > 0);
     //Part 2 is how many rolls can be moved in total, taking into account rolls that can be moved after others are moved.
-    MessageBox.Show("Part 2: " + totalMoved.ToString());
+    MessageBox.Show("Part 2: " + totalMoved.ToString() + ", found in " + iterations.ToString() + " passes.");
 }
